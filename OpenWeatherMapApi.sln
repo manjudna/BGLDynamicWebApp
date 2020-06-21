@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMapApi", "API\OpenWeatherMapApi.csproj", "{27183525-043C-47F7-9502-8A483F059E4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{2BE26A8F-F2B9-4DD1-AEB8-4D112C00FFE8}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WeatherApp", "WeatherApp\", "{94B0EDA5-1901-47A5-A274-20EBFB43D1C7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58550"
+		Debug.AspNetCompiler.PhysicalPath = "WeatherApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58550\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58550"
+		Release.AspNetCompiler.PhysicalPath = "WeatherApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58550\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58550"
+		SlnRelativePath = "WeatherApp\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27183525-043C-47F7-9502-8A483F059E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27183525-043C-47F7-9502-8A483F059E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27183525-043C-47F7-9502-8A483F059E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27183525-043C-47F7-9502-8A483F059E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE26A8F-F2B9-4DD1-AEB8-4D112C00FFE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE26A8F-F2B9-4DD1-AEB8-4D112C00FFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE26A8F-F2B9-4DD1-AEB8-4D112C00FFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE26A8F-F2B9-4DD1-AEB8-4D112C00FFE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B0EDA5-1901-47A5-A274-20EBFB43D1C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B0EDA5-1901-47A5-A274-20EBFB43D1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B0EDA5-1901-47A5-A274-20EBFB43D1C7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B0EDA5-1901-47A5-A274-20EBFB43D1C7}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {876ACE96-58A0-40ED-82FD-46CC30E87726}
+	EndGlobalSection
+EndGlobal
