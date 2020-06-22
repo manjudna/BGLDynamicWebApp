@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  dynamicwebappcore:
+    image: ${DOCKER_REGISTRY-}dynamicwebappcore
+    build:
+      context: .
+      dockerfile: DynamicWebAppCore/Dockerfile
+    depends-on: openweathermapapi
+
+
+  openweathermapapi:
+    image: ${DOCKER_REGISTRY-}openweathermapapi
+    build:
+      context: .
+      dockerfile: OpenWeatherMapApi/Dockerfile
+
+  

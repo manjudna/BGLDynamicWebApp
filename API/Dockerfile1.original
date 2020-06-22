@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["API/OpenWeatherMapApi.csproj", "API/"]
-RUN dotnet restore "API/OpenWeatherMapApi.csproj"
+COPY ["OpenWeatherMapApi.csproj", "./"]
+RUN dotnet restore "./OpenWeatherMapApi.csproj"
 COPY . .
-WORKDIR "/src/API"
+
 RUN dotnet build "OpenWeatherMapApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
