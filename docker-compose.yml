@@ -2,17 +2,31 @@ version: '3.4'
 
 services:
   dynamicwebappcore:
-    image: ${DOCKER_REGISTRY-}dynamicwebappcore
+    container_name: 'dynamicwebappcore'
+    image: 'dynamicwebappcore'
     build:
       context: .
       dockerfile: DynamicWebAppCore/Dockerfile
-    depends-on: openweathermapapi
+    ports:
+     - "5000:5000"
+    depends_on:
+     - "openweathermapapi"
+    networks:
+      - weatherapp-network
 
 
   openweathermapapi:
-    image: ${DOCKER_REGISTRY-}openweathermapapi
+    container_name: 'openweathermapapi'
+    image: 'openweathermapapi'
     build:
       context: .
-      dockerfile: OpenWeatherMapApi/Dockerfile
+      dockerfile: API/Dockerfile
+    ports:
+     - "6000:6000" 
+    networks:
+      - weatherapp-network
 
+networks:
+  weatherapp-network:
+    driver: bridge
   

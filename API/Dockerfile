@@ -10,11 +10,11 @@ WORKDIR /src
 COPY ["API/OpenWeatherMapApi.csproj", "API/"]
 RUN dotnet restore "API/OpenWeatherMapApi.csproj"
 COPY . .
-WORKDIR "/src/API"
-RUN dotnet build "OpenWeatherMapApi.csproj" -c Release -o /app/build
+
+RUN dotnet build "API/OpenWeatherMapApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "OpenWeatherMapApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "API/OpenWeatherMapApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

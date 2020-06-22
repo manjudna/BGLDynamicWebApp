@@ -4,7 +4,9 @@ import * as types from "./actionTypes";
 //const API_KEY = "15e39f24e05f6ea0af88f89dc11e5295";
 //const ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 //const ROOT_URL = 'https://localhost:44304/weatherforecast'
-const ROOT_URL = 'https://localhost:44304/weatherdata'
+//const ROOT_URL = 'https://localhost:44304/weatherdata'
+//http://192.168.99.100:8081/weatherdata
+const ROOT_URL = 'http://192.168.99.100:8081/weatherdata'
 
 /*
   We don't expose the start/success/fail action creators (but we do expose the
