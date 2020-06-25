@@ -6,7 +6,7 @@ import * as types from "./actionTypes";
 //const ROOT_URL = 'https://localhost:44304/weatherforecast'
 //const ROOT_URL = 'https://localhost:44304/weatherdata'
 //http://192.168.99.100:8081/weatherdata
-const ROOT_URL = 'http://192.168.99.100:8081/weatherdata'
+const ROOT_URL = 'http://192.168.99.100:8080/WeatherData'
 
 /*
   We don't expose the start/success/fail action creators (but we do expose the

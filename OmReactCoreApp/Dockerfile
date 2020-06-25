@@ -14,11 +14,11 @@ COPY . .
 
 # Install dependencies. 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-restore?tabs=netcore2x
-RUN dotnet restore "DynamicWebAppCore/DynamicWebAppCore.csproj"
+RUN dotnet restore "OmReactCoreApp/OmReactCoreApp.csproj"
 
 # Compile, then pack the compiled app and dependencies into a deployable unit.
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish?tabs=netcore21
-RUN dotnet publish "DynamicWebAppCore/DynamicWebAppCore.csproj" -c Release -o /app/publish
+RUN dotnet publish "OmReactCoreApp/OmReactCoreApp.csproj" -c Release -o /app/publish
 
 # Pull down an image from Docker Hub that includes only the ASP.NET core runtime:
 # https://hub.docker.com/_/microsoft-dotnet-core-aspnet/
@@ -28,9 +28,9 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 
 # Expose port 80 to your local machine so you can access the app.
 EXPOSE 80
-
+EXPOSE 443
 # Copy the published app to this new runtime-only container.
 COPY --from=build /app/publish .
 
 # To run the app, run `dotnet OmReactCoreApp.dll`, which we just copied over.
-ENTRYPOINT ["dotnet", "DynamicWebAppCore.dll"]
+ENTRYPOINT ["dotnet", "OmReactCoreApp.dll"]
