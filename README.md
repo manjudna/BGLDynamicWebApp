@@ -10,4 +10,6 @@ Run docker-compose build
 
 Run docker-compose up
 
-Navigate to http://localhost:8080 in your browser to view the site where you can search the weather.
+Navigate to http://localhost:8080/fetch-data in your browser if you are running in docker hub to view the site where you can search the weather.
+
+in case you are running in docker toolbox IP should be used eg. http://192.168.99.100:8080/fetch-data
