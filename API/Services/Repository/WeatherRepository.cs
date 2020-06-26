@@ -3,10 +3,8 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Polly;
-using RestSharp;
 using System;
 using System.Net.Http;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMapApi.Services
@@ -73,29 +71,6 @@ namespace OpenWeatherMapApi.Services
                     _memoryCache.Set(cacheKey, weatherForecast, cacheExpiryOption);
 
                 }
-
-
-                //if (response.IsSuccessful)
-                //{
-                //    // Deserialize the string content into JToken object
-                //    var content = JsonConvert.DeserializeObject<JToken>(response.Content);
-                //    var weatherData = content.ToObject<WeatherResponse>();
-                //    if (weatherForecast == null)
-                //        weatherForecast = new WeatherData();
-
-                //    weatherForecast = WeatherMapper.MapWeatherObjects(weatherData, weatherForecast);
-                //     //add redis cache here ideally
-
-                //    //TODO::to be moved to Seperate class to make use of memory related operations 
-                //    var cacheExpiryOption = new MemoryCacheEntryOptions
-                //    {
-                //        AbsoluteExpiration = DateTime.Now.AddHours(6),
-                //        Priority = CacheItemPriority.Normal,
-                //        SlidingExpiration = TimeSpan.FromMinutes(5)
-                //    };
-                //    _memoryCache.Set(cacheKey, weatherForecast, cacheExpiryOption);
-
-                //}
 
             }
 

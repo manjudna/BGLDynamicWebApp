@@ -32,20 +32,7 @@ namespace OpenWeatherMapApi.Controllers
             
         }
 
-        /// <summary>
-        /// repository with service implementation
-        /// </summary>
-        /// <param name="city"></param>
-        /// <returns></returns>
-        //[HttpGet]
-        //public async Task<WeatherData> Get(string city)
-        //{
-
-        //    var weatherdata = await _weatherService.GetWeatherData(city);
-        //    return weatherdata.weatherData;
-
-        //}
-
+        
         /// <summary>
         /// Gets the weatherdata from OpenMap Weather API. 
         /// </summary>

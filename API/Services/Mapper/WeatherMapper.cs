@@ -2,6 +2,9 @@
 
 namespace OpenWeatherMapApi.Services
 {
+    /// <summary>
+    /// maps the api response to business model
+    /// </summary>
     public class WeatherMapper
     {
         public static WeatherData MapWeatherObjects(WeatherResponse weatherResponse , WeatherData weatherData)
