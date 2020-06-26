@@ -8,8 +8,7 @@ import { stat } from 'fs';
 
 // At runtime, Redux will merge together...
 type WeatherForecastProps =
-    WeatherForecastsStore.WeatherForecastsState // ... state we've requested from the Redux store
-    & WeatherForecastsStore.WeatherDataState
+  WeatherForecastsStore.WeatherDataState
   & typeof WeatherForecastsStore.actionCreators // ... plus action creators we've requested
   & RouteComponentProps<{ startDateIndex: string }>; // ... plus incoming routing parameters
 
