@@ -62,6 +62,7 @@ namespace XUnitTestProject1
             Assert.NotNull(forecast.TemperatureC.ToString());
             Assert.NotNull(forecast.TemperatureMax.ToString());
             Assert.NotNull(forecast.TemperatureMin.ToString());
+            Assert.NotNull(forecast.Desc.ToString());
         }
 
 
@@ -85,6 +86,8 @@ namespace XUnitTestProject1
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
             
         }
+
+
 
     }
 }

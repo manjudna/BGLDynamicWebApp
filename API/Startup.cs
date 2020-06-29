@@ -48,11 +48,9 @@ namespace OpenWeatherMapApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseCors(
-        options => options.WithOrigins("http://192.168.99.100:8080").AllowAnyMethod()
-       //options => options.WithOrigins("http://localhost:56467").AllowAnyMethod()
-    );
+                options => options.WithOrigins(Configuration.GetSection("AppSettings:CrossOriginURL").Value).AllowAnyMethod());
             
             app.UseSwagger();
 

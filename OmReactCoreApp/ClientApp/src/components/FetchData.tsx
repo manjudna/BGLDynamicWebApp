@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { ApplicationState } from '../store';
 import * as WeatherForecastsStore from '../store/WeatherForecasts';
 import { stat } from 'fs';
+import { SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG } from 'constants';
+
 
 // At runtime, Redux will merge together...
 type WeatherForecastProps =
@@ -36,12 +38,6 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
 
         this.props.requestWeatherData(this.state.searchQuery);
 
-        if (this.props.weatherData.locationName === undefined) {
-            this.setState({ errorMessage: 'City not found, Enter the valid location' });
-        }
-        else {
-            this.setState({ errorMessage: '' });
-        }
     }
 
     public componentDidMount() {
@@ -62,28 +58,59 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
             return t
         }
 
+        let cname = getClassName(this.props.weatherData.desc);
+
+        function getClassName(temp: any) {
+
+            let cname;
+            switch (true) {
+
+                case temp ==='Clear':
+                    cname = 'app warm';
+                    break;
+                case temp==='Rain':
+                    cname = 'rain';
+                    break;
+
+                default: cname = 'app';
+                    break;
+
+
+            }
+
+            return cname;
+           //return temp > 16 ? 'app warm' : 'app'
+
+        }
+
       return (
           <div>
                      
+              <p>
+                  {
 
-
-              <div className="row">
+                      
+                
+              }
+              </p>
+              <div>
                   
                   
             
-            <form className="form-inline my-2 my-lg-0" onSubmit={(e) => this.handleSeachSubmit(e)}>
-                     
-                      <div className="col-sm-8">
+                  <form onSubmit={(e) => this.handleSeachSubmit(e)}>
+                      <div className="row">
+                      <div className="search-box">
                           <input className="form-control form-control form-control-sm" type="text" required value={this.state.searchQuery} onChange={(e) => this.handleSearchQueryChange(e)} placeholder="Search!" />
                       </div>
-                      <div className="col-sm-4"> <button className="btn btn-outline-success btn-sm" type="submit">Search</button>&nbsp;</div>
+                          <div className="col-sm-4"> <button className="btn btn-outline-success btn-sm" type="submit">Search</button>&nbsp;</div>
+                          </div>
             </form>
 
               </div>
 
-              {this.state.errorMessage && (
-                  <label className="red-text" style={{ marginTop: "2.5rem", color: 'red', fontWeight: 'bolder', fontSize:'large' }}>
-                      {this.state.errorMessage}
+              {this.props.error && (
+                  <label className="red-text" style={{ marginTop: "2.5rem", color: 'red', fontWeight: 'bolder', fontSize: 'large' }}>
+                      {this.props.error}
                   </label>
               )}
               
@@ -93,8 +120,8 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
 
               </div>
 
-              <div className={this.props.weatherData.temperatureC>16?'app warm':'app'}>
-                      
+              <div className={cname}>
+                 
                       {
                           <div className="location-box">
                               <div className="location">{this.props.weatherData.locationName}</div>
@@ -152,9 +179,9 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
                           </div>
                           <div className="col-sm-6">
                               <div className="weather-box">
-                              <div className="weather">
-                                  <div>Sunset</div>
-                                  {sunset}
+                                  <div className="weather">
+                                      <div>Sunset</div>
+                                      {sunset}  
                               </div>
                               </div>
                           </div>

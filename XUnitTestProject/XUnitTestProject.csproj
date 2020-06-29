@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="OpenWeatherMapApi">
-      <HintPath>..\API\bin\Debug\netcoreapp3.1\OpenWeatherMapApi.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\API\OpenWeatherMapApi.csproj" />
   </ItemGroup>
 
 </Project>

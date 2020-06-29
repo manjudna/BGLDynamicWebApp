@@ -21,6 +21,7 @@ export interface WeatherData {
     sunrise: string;
     sunset: string;
     locationName: string;
+    desc: string;
 }
 
 // -----------------
@@ -40,10 +41,14 @@ interface RequestWeatherDataAction {
     
 }
 
+interface FetchWeatherDataFail {
+    type: 'FETCH_WEATHER_FAIL';
+    error: string;
+}
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction =  ReceiveWeatherDataAction | RequestWeatherDataAction;
+type KnownAction = ReceiveWeatherDataAction | RequestWeatherDataAction | FetchWeatherDataFail;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
@@ -55,12 +60,19 @@ export const actionCreators = {
         // Only load data if it's something we don't already have (and are not already loading)
         const appState = getState();
         // if (appState && appState.weatherDatas && startDateIndex !== appState.weatherDatas.startDateIndex) {
-        fetch(`http://192.168.99.100:8081/WeatherData/` + location)
+       // fetch(`http://192.168.99.100:8081/WeatherData/` + location)
         //fetch(`https://localhost:44304/WeatherData/` + location)
-            .then(response => response.json() as Promise<WeatherData>)
+        fetch(process.env.REACT_APP_BASE_URL + location)
+            //.then(response => response.json() as Promise<WeatherData>)
+            .then(response => response.json() as Promise<any>)
             .then(data => {
                 //console.log(data);
-                dispatch({ type: 'RECEIVE_WEATHER_DATA', location: location, weatherData: data });
+                if (data.status === 404) {
+                    dispatch({ type: 'FETCH_WEATHER_FAIL', error: data.status });
+                }
+                else {
+                    dispatch({ type: 'RECEIVE_WEATHER_DATA', location: location, weatherData: data });
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -79,7 +91,7 @@ export const actionCreators = {
 const unloadedStatew: WeatherDataState = {
     weatherData: {
         humidity: '', temperatureC: 0, locationName: '', pressure: '',
-        sunrise: '', sunset: '', temperatureMax: '', temperatureMin: ''
+        sunrise: '', sunset: '', temperatureMax: '', temperatureMin: '', desc:''
     }, isLoading: false, location: '', error:''
 };
 
@@ -108,7 +120,22 @@ export const reducerw: Reducer<WeatherDataState> = (state: WeatherDataState | un
                 isLoading: false,
                 error: ''
             };
-        
+
+        case 'FETCH_WEATHER_FAIL':
+            console.log('recieve', action.error);
+
+            return {
+                isLoading: false,
+                location: '',
+                weatherData: {
+                    humidity: '', temperatureC: 0, locationName: '', pressure: '',
+                    sunrise: '', sunset: '', temperatureMax: '', temperatureMin: '', desc:''
+                },
+                
+                error: 'Cannot find the city you just typed, please enter valid city ie.. London, Paris, New York'
+            };
+
+
             break;
     }
 

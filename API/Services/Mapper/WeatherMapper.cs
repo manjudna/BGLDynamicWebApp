@@ -20,7 +20,7 @@ namespace OpenWeatherMapApi.Services
             weatherData.TemperatureC = Convert.ToInt32(weatherResponse.Main.Temp);
             weatherData.TemperatureMax = Convert.ToInt32(weatherResponse.Main.Temp_Max);
             weatherData.TemperatureMin = Convert.ToInt32(weatherResponse.Main.Temp_Min);
-
+            weatherData.Desc = weatherResponse.Weather[0].Main;
             return weatherData;
         }
     }

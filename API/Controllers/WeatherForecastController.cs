@@ -45,7 +45,7 @@ namespace OpenWeatherMapApi.Controllers
         {
                                     
             if (city == null )
-                return BadRequest();
+                return BadRequest("City not found");
 
             var weatherdata = await _weatherService.GetWeatherData(city);      
             

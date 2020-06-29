@@ -22,5 +22,7 @@ namespace OpenWeatherMapApi
         public int Sunset { get; set; }
         public string LocationName { get; set; }
 
+        public string Desc { get; set; }
+
     }
 }
