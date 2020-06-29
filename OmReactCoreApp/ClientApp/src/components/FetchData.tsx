@@ -58,9 +58,9 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
             return t
         }
 
-        let cname = getClassName(this.props.weatherData.desc);
+        let cname = getClassName(this.props.weatherData.desc, this.props.weatherData.temperatureC);
 
-        function getClassName(temp: any) {
+        function getClassName(temp: string,tempc: number) {
 
             let cname;
             switch (true) {
@@ -68,11 +68,15 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
                 case temp ==='Clear':
                     cname = 'app warm';
                     break;
+                case tempc < 16:
+                    cname = 'app';
+                    break;
+
                 case temp==='Rain':
                     cname = 'rain';
                     break;
 
-                default: cname = 'app';
+                default: cname = 'app warm';
                     break;
 
 
