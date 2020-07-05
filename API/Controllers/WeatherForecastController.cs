@@ -9,6 +9,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using OpenWeatherMapApi.Models.Error;
 using OpenWeatherMapApi.Services;
 using RestSharp;
 
@@ -52,7 +53,7 @@ namespace OpenWeatherMapApi.Controllers
             if(!weatherdata.IsSuccess)
                 return BadRequest();
             if (weatherdata.weatherData == null)
-                return NotFound();
+                return NotFound(new ErrorDetails {Message="City Not Found",StatusCode = Convert.ToInt32( System.Net.HttpStatusCode.NotFound) });
 
             return Ok(weatherdata.weatherData);
         }
