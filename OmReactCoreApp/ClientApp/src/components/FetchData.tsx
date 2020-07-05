@@ -89,24 +89,14 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
 
       return (
           <div>
-                     
-              <p>
-                  {
-
-                      
-                
-              }
-              </p>
               <div>
-                  
-                  
-            
                   <form onSubmit={(e) => this.handleSeachSubmit(e)}>
                       <div className="row">
                       <div className="search-box">
                           <input className="form-control form-control form-control-sm" type="text" required value={this.state.searchQuery} onChange={(e) => this.handleSearchQueryChange(e)} placeholder="Search!" />
                       </div>
-                          <div className="col-sm-4"> <button className="btn btn-outline-success btn-sm" type="submit">Search</button>&nbsp;</div>
+                          <div className="col-sm-4">
+                               <button className="btn btn-outline-success btn-sm" type="submit">Search</button>&nbsp;</div>
                           </div>
             </form>
 

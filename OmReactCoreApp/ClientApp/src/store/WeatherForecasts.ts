@@ -28,20 +28,20 @@ export interface WeatherData {
 // ACTIONS - These are serializable (hence replayable) descriptions of state transitions.
 // They do not themselves have any side-effects; they just describe something that is going to happen.
 
-interface ReceiveWeatherDataAction {
+export interface ReceiveWeatherDataAction {
     type: 'RECEIVE_WEATHER_DATA';
     location: string;
     weatherData: WeatherData;
     
 }
 
-interface RequestWeatherDataAction {
+export interface RequestWeatherDataAction {
     type: 'REQUEST_WEATHER_DATA';
     location: string;
     
 }
 
-interface FetchWeatherDataFail {
+export interface FetchWeatherDataFail {
     type: 'FETCH_WEATHER_FAIL';
     error: string;
 }
