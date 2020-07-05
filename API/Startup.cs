@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenWeatherMapApi.Services;
 using Microsoft.OpenApi.Models;
+using OpenWeatherMapApi.Extensions;
+using NLog;
+using System.IO;
+using LoggerService;
 
 namespace OpenWeatherMapApi
 {
@@ -19,6 +23,7 @@ namespace OpenWeatherMapApi
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -31,6 +36,7 @@ namespace OpenWeatherMapApi
             services.AddCors();
             services.AddMemoryCache();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddSingleton<ILoggerManager, LoggerManager>();
 
             services.AddTransient<IWeatherService, WeatherService>();
             services.AddTransient<IWeatherRepository, WeatherRepository>();
@@ -42,7 +48,7 @@ namespace OpenWeatherMapApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
@@ -53,6 +59,8 @@ namespace OpenWeatherMapApi
                 options => options.WithOrigins(Configuration.GetSection("AppSettings:CrossOriginURL").Value).AllowAnyMethod());
             
             app.UseSwagger();
+
+            app.ConfigureExceptionHandler(logger);
 
             app.UseSwaggerUI(c =>
             {

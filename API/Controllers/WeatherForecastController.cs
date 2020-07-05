@@ -29,7 +29,6 @@ namespace OpenWeatherMapApi.Controllers
         {
             _weatherService = weatherService;
             _logger = logger;
-            
         }
 
         
@@ -43,7 +42,8 @@ namespace OpenWeatherMapApi.Controllers
         [Route("/WeatherData/{city}")]
         public async Task<IActionResult> GetWeatherData(string city)
         {
-                                    
+            _logger.Log(LogLevel.Information, "GetWeatherData function entered");
+
             if (city == null )
                 return BadRequest("City not found");
 

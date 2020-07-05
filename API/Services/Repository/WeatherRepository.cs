@@ -42,10 +42,7 @@ namespace OpenWeatherMapApi.Services
                     });
 
                 string apiURL = AppSettings.OpenWeatherApiURL.Replace("{city}", city);
-                //var client = new RestClient(apiURL);
-                //var request = new RestRequest(Method.GET);
-                //IRestResponse response =  await client.ExecuteAsync(request);
-
+                
 
                 HttpClient httpClient = new HttpClient();
                 HttpResponseMessage response = await policy.ExecuteAsync(
