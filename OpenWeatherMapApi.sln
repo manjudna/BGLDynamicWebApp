@@ -11,6 +11,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OmReactCoreApp", "OmReactCoreApp\OmReactCoreApp.csproj", "{AECB57CC-E32C-42AD-BF82-DA0F921F0F37}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayService", "GatewayService\GatewayService.csproj", "{A5D0B561-9B6D-4D1E-94A8-9B2E43F7F746}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AECB57CC-E32C-42AD-BF82-DA0F921F0F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AECB57CC-E32C-42AD-BF82-DA0F921F0F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AECB57CC-E32C-42AD-BF82-DA0F921F0F37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D0B561-9B6D-4D1E-94A8-9B2E43F7F746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D0B561-9B6D-4D1E-94A8-9B2E43F7F746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D0B561-9B6D-4D1E-94A8-9B2E43F7F746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D0B561-9B6D-4D1E-94A8-9B2E43F7F746}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
